@@ -199,7 +199,7 @@ enum _SPIC_BIT_MODE_ {
     #define FLASH_VLD_DUAL_CMDS (BIT_WR_BLOCKING | BIT_RD_DUAL_IO)  
     #define FLASH_VLD_QUAD_CMDS (BIT_WR_BLOCKING | BIT_WR_QUAD_II | BIT_RD_QUAD_IO)
 #endif
-#if 0
+#if 1
 //======================================================
 // Function prototype
 BOOLEAN SpicFlashInitRtl8195A(u8 SpicBitMode);

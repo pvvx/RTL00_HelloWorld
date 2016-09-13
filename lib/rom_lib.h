@@ -7,8 +7,11 @@
 
 	#include "strproc.h"
 	#include "basic_types.h"
+//#include "rtl_std_lib/include/rt_lib_rom.h"
 //	#include "fwlib/hal_misc.h"
 //	#include "rtl_std_lib/include/rtl_lib.h"
+
+#define _ROM_CALL_
 
 extern uint32_t HalDelayUs(uint32_t us);
 extern uint32_t DiagPrintf(const char *fmt, ...);
@@ -61,15 +64,20 @@ extern COMMAND_TABLE  UartLogRomCmdTable[];
 //	#define sprintf							prvDiagSPrintf
 	#define snprintf					DiagSnPrintf
 
+#define memset	rtl_memset_v1_00
+#define memchr	rtl_memchr_v1_00
+#define memmove	rtl_memmove_v1_00
+#define memcpy	rtl_memcpy_v1_00
+extern _ROM_CALL_ void * rtl_memset_v1_00(void * m , int c , size_t n);
+extern _ROM_CALL_ void * rtl_memchr_v1_00(const void * src_void , int c , size_t length);
+extern _ROM_CALL_ void * rtl_memmove_v1_00( void * dst_void , const void * src_void , size_t length);
+extern _ROM_CALL_ void * rtl_memcpy_v1_00(void * __restrict dst0 , const void * __restrict src0 , size_t len0);
 
-	#define memchr						rtl_memchr
-	#define memcmp						rtl_memcmp
-	#define memcpy						rtl_memcpy
-	#define memmove						rtl_memmove
-	#define memset						rtl_memset
+#define strcmp	rtl_strcmp_v1_00
+extern _ROM_CALL_ int rtl_strcmp_v1_00(const char *s1 ,	const char *s2);
+
 	#define strcat						rtl_strcat
 	#define strchr						rtl_strchr
-	#define strcmp(s1, s2)				rtl_strcmp((const char *)s1, (const char *)s2)
 	#define strcpy						rtl_strcpy
 	#define strlen(str)					rtl_strlen((const char *)str)
 	#define strncat						rtl_strncat
@@ -86,9 +94,17 @@ extern COMMAND_TABLE  UartLogRomCmdTable[];
 //	#define sscanf		rtl_sscanf
 	#define strnlen		rtl_strnlen
 //	#define strlen		rtl_strlen
-	
+
+
+
 	#define strstr		rtl_strstr
 	#define vsnprintf	rtl_vfprintf_r
-	
+/*
+#define fflush_r 			rtl_fflush_r_v1_00
+#define vfprintf_r		rtl_vfprintf_r_v1_00
+
+extern _ROM_CALL_ int rtl_fflush_r_v1_00(struct _reent *ptr, register FILE * fp);
+extern _ROM_CALL_ int rtl_vfprintf_r_v1_00(struct _reent *, FILE *, const char *, va_list);
+*/
 	
 #endif // __PLATFORM_ROMLIB_H__

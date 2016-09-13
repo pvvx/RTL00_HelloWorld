@@ -9,9 +9,10 @@
 
 
 #include <basic_types.h>
-#include <diag.h>
+#define _ROM_CALL_
+//#include <diag.h>
 
-#include <reent.h>
+//#include <reent.h>
 
 #include "../libc/rom/string/rom_libc_string.h"
 #include "../libgloss/rtl8195a/rom/rom_libgloss_retarget.h"
@@ -138,7 +139,7 @@ extern _ROM_CALL_ _Bigint * rtl_i2b_v1_00(struct _reent *ptr, int i );
 extern _ROM_CALL_ _Bigint * rtl_pow5mult_v1_00(struct _reent * ptr, _Bigint *b, int k);
 extern _ROM_CALL_ _Bigint * rtl_multadd_v1_00(struct _reent *ptr, _Bigint * b, int m, int a);
 extern _ROM_CALL_ _Bigint * rtl_mult_v1_00(struct _reent *ptr, _Bigint *a, _Bigint *b);
-extern _ROM_CALL_ int rtl_hi0bits_v1_00(register __ULong x);
+//extern _ROM_CALL_ int rtl_hi0bits_v1_00(register __ULong x);
 extern _ROM_CALL_ _Bigint *rtl_lshift_v1_00(struct _reent *ptr, _Bigint *b, int k);
 extern _ROM_CALL_ int rtl_cmp_v1_00(_Bigint *a, _Bigint *b);
 extern _ROM_CALL_ _Bigint *rtl_diff_v1_00(struct _reent* ptr, _Bigint *a, _Bigint *b);
@@ -154,8 +155,8 @@ extern char * rtl_dtoa_r_v1_00(struct _reent *ptr, double _d, int mode, int ndig
 //
 // mallocr
 //
-#include <sys/config.h>
-#include <reent.h>
+//#include <sys/config.h>
+//#include <reent.h>
 
 
 
@@ -222,7 +223,7 @@ extern _ROM_CALL_ _READ_WRITE_RETURN_TYPE rtl_seofread_v1_00(
        _PTR cookie,
        char *buf,
        _READ_WRITE_BUFSIZE_TYPE len);
-
+/*
 extern _ROM_CALL_ _fpos_t rtl_sseek_v1_00(
        struct _reent *ptr _AND
        void *cookie _AND
@@ -236,7 +237,7 @@ extern _ROM_CALL_ int rtl_sclose_v1_00(
 extern _ROM_CALL_ void * rtl_sbrk_r_v1_00(
      struct _reent *ptr,
      ptrdiff_t incr);
-
+*/
 //
 // vfprintf
 //
